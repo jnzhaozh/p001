@@ -1,6 +1,6 @@
 # p001
 
-This repository contains simulation code, results, and figures for the manuscript "Collective Behavior with Heterogeneous Information Exposure".
+This repository contains R code, simulation results, and figures for the manuscript "Collective Behavior under Heterogeneous Information Exposure."
 
 ## Contents
 
