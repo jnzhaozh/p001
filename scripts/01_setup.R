@@ -1,71 +1,13 @@
-# packages ----------------------------------------------------------------
-
-this_packages <- c(
-  "backbone",
-  "broom",
-  "datawizard",
-  "dplyr",
-  "extraDistr",
-  "forcats",
-  "furrr",
-  "future",
-  "ggplot2",
-  "ggraph",
-  "ggsci",
-  # "ggtext",
-  "progress",
-  "progressr",
-  "here",
-  "igraph",
-  "latex2exp",
-  "lhs",
-  "Matrix",
-  # "matrixStats",
-  "mgcv",
-  # "multinet",
-  "patchwork",
-  "purrr",
-  # "randomForest",
-  "scales",
-  "sensitivity",
-  "stringr",
-  "vegan",
-  "tibble",
-  "tidyr",
-  "viridis"
-)
-
-suppressPackageStartupMessages({
-  invisible(lapply(this_packages, library, character.only = TRUE))
-})
-
-
-# folders -----------------------------------------------------------------
-
-this_folders <- c(
-  "data",
-  "data/raw",
-  "docs",
-  "figures",
-  "figures/archive",
-  "results",
-  "results/archive",
-  "scripts",
-  "scripts/archive"
-)
-
-
-invisible(sapply(
-  here::here(this_folders),
-  dir.create,
-  showWarnings = FALSE,
-  recursive = TRUE
-))
-
+library(ggplot2)
+library(here)
 
 # theme -------------------------------------------------------------------
 
-this_theme <- function(base_size = 10, base_family = "sans") {
+this_theme <- function(
+  base_size = 15,
+  base_family = "sans",
+  ...
+) {
   ggplot2::theme_bw(
     base_size = base_size,
     base_family = base_family
@@ -86,7 +28,7 @@ this_theme <- function(base_size = 10, base_family = "sans") {
         margin = margin(b = 5)
       ),
       plot.margin = ggplot2::margin(
-        t = 5,
+        t = 10,
         r = 10,
         b = 5,
         l = 5,
@@ -160,35 +102,62 @@ this_theme <- function(base_size = 10, base_family = "sans") {
         # hjust = 0.5,
         margin = margin(4, 4, 4, 4)
       )
-    )
+    ) +
+    ggplot2::theme(...)
 }
 
 # utility functions -------------------------------------------------------
 
-this_saveRDS <- function(x, obj_name = NULL) {
-  if (is.null(obj_name)) {
-    obj_name <- deparse1(substitute(x))
+this_saveRDS <- function(
+  x,
+  name = NULL
+) {
+  if (is.null(name)) {
+    name <- deparse1(substitute(x))
   }
 
-  timestamp <- format(Sys.time(), "%Y%m%d%H%M")
-  file_name <- paste0(obj_name, "_", timestamp, ".rds")
-  file_path <- here::here("results", file_name)
+  file_path <- here(
+    "results",
+    paste0(name, ".rds")
+  )
 
-  dir.create(here::here("results"), showWarnings = FALSE, recursive = TRUE)
+  dir.create(
+    dirname(file_path),
+    showWarnings = FALSE,
+    recursive = TRUE
+  )
 
-  saveRDS(x, file = file_path)
+  saveRDS(
+    x,
+    file = file_path
+  )
 
   message(">>> Saved to: ", file_path)
+
+  invisible(file_path)
 }
 
 
-this_ggsave <- function(x, width = 6.5, height = 4.5) {
-  obj_name <- deparse1(substitute(x))
-  file_stem <- sub("^p_", "", obj_name)
-  file_name <- paste0(file_stem, ".pdf")
-  file_path <- here::here("figures", file_name)
+this_ggsave <- function(
+  x,
+  name = NULL,
+  width = 6.5,
+  height = 4.5
+) {
+  if (is.null(name)) {
+    name <- deparse1(substitute(x))
+  }
 
-  dir.create(here::here("figures"), showWarnings = FALSE, recursive = TRUE)
+  file_path <- here(
+    "figures",
+    paste0(name, ".pdf")
+  )
+
+  dir.create(
+    dirname(file_path),
+    showWarnings = FALSE,
+    recursive = TRUE
+  )
 
   ggsave(
     filename = file_path,
@@ -201,4 +170,6 @@ this_ggsave <- function(x, width = 6.5, height = 4.5) {
   )
 
   message(">>> Saved to: ", file_path)
+
+  invisible(file_path)
 }
