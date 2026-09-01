@@ -1,13 +1,13 @@
 # p001
 
-This repository contains R code, simulation results, and figures for the manuscript "Collective Behavior under Heterogeneous Information Exposure."
+Reproducibility materials for *Collective Behavior under Heterogeneous Information Exposure*.
 
 ## Contents
 
-- `scripts/`: R scripts used for simulation and figure generation.
-- `results/`: simulation outputs used in the analysis.
-- `figures/`: figures generated from the simulation results.
+- `scripts/` — R code.
+- `results/` — analysis results.
+- `figures/` — generated figures.
 
 ## Usage
 
-Run the scripts in `scripts/` to reproduce the simulation results and figures.
+Restore the R environment with `renv::restore()`, then run the scripts in `scripts/` in numerical order.
