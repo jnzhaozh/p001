@@ -1,13 +1,20 @@
-# p001
+## About this repository
 
-Reproducibility materials for *Collective Behavior under Heterogeneous Information Exposure*.
+This repository contains the reproducibility materials for the paper ***Collective Behavior under Heterogeneous Information Exposure***.
 
-## Contents
+## Repository structure
 
-- `scripts/` — R code.
-- `results/` — analysis results.
-- `figures/` — generated figures.
+- `scripts/` — R scripts
+- `results/` — analysis results
+- `figures/` — generated figures
+- `renv/` — project environment infrastructure
+- `renv.lock` — R package versions
+- `.Rprofile` — activates the project environment
 
-## Usage
+## Reproducing the analysis
 
-Restore the R environment with `renv::restore()`, then run the scripts in `scripts/` in numerical order.
+1. Restore the R environment
+```r
+renv::restore()
+```
+2. Run the scripts in `scripts/` in numerical order.
