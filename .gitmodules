@@ -1,6 +1,3 @@
 [submodule "docs"]
 	path = docs
 	url = git@github.com:jnzhaozh/p001-docs.git
-[submodule "tools"]
-	path = tools
-	url = git@github.com:jnzhaozh/p001-tools.git
