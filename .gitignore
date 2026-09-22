@@ -1,7 +1,0 @@
-# R session / local project state
-.Rhistory
-.RData
-.Rproj.user/
-
-# macOS
-.DS_Store

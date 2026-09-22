@@ -1,6 +1,6 @@
-## About this repository
+## Overview
 
-This repository contains the reproducibility materials for the paper ***Collective Behavior under Heterogeneous Information Exposure***.
+This repository contains the reproducibility materials for the study ***Collective Behavior under Heterogeneous Information Exposure***.
 
 ## Repository structure
 
@@ -13,8 +13,5 @@ This repository contains the reproducibility materials for the paper ***Collecti
 
 ## Reproducing the analysis
 
-1. Restore the R environment
-```r
-renv::restore()
-```
+1. Restore the R environment with `renv::restore()`.
 2. Run the scripts in `scripts/` in numerical order.
