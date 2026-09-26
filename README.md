@@ -1,6 +1,6 @@
 ## Overview
 
-This repository contains the reproducibility materials for the study ***Collective Behavior under Heterogeneous Information Exposure***.
+This repository contains the reproducibility materials for the study **_Collective Behavior under Heterogeneous Information Exposure_**.
 
 ## Repository structure
 
